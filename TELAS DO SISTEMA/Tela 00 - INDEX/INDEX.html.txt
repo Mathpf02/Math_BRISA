@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alquímia Taverna - Sistema de Gestão de Estoque</title>
+    <link rel="stylesheet" href="CSS/style_INDEX.css" />
+  </head>
+
+  <body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+      <div class="header-container">
+        <a href="https://unipampa.edu.br/portal/" class="logo-link">
+          <img
+            src="IMAGE/Logo_UNIPAMPA.png"
+            alt="UNIPAMPA"
+            class="logo-unipampa"
+          />
+        </a>
+
+        <nav class="nav-menu">
+          <button class="nav-btn" data-section="alquimia">ALQUÍMIA</button>
+          <button class="nav-btn" data-section="equipe">EQUIPE</button>
+          <button class="nav-btn" data-section="sistema">SISTEMA</button>
+          <span class="nav-divider">|</span>
+          <a href="PHP/in/t_login.php" class="nav-btn btn-entrar">ENTRAR</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <img
+          src="IMAGE/Logo_ALQUIMIA.png"
+          alt="Alquímia Taverna"
+          class="hero-logo"
+        />
+      </div>
+    </section>
+
+    <!-- ==================== ALQUÍMIA ==================== -->
+    <section id="alquimia" class="section alquimia-section">
+      <div class="container">
+        <!-- TÍTULO -->
+        <div class="tittle">
+          <h1 class="alquimia-title"><strong>ALQUÍMIA TAVERNA</strong></h1>
+          <h3 class="alquimia-subtitle">Os melhores rótulos em um só lugar!</h3>
+        </div>
+
+        <!-- DIVISOR DE TÍTULO -->
+        <div class="title-divider"></div>  
+
+        <div class="alquimia-layout">
+            <!-- TEXTO -->
+            <div class="text">
+            <p>
+                Bem-vindo à Alquimia Taverna, o seu destino definitivo para os
+                melhores rótulos de bebidas! Nossa taverna é um refúgio para os
+                amantes de bebidas finas, oferecendo uma seleção cuidadosamente
+                curada de vinhos, cervejas artesanais, destilados e muito mais.
+            </p>
+
+            <p>
+                Seja você um conhecedor experiente ou alguém que está apenas
+                começando a explorar o mundo das bebidas, temos algo especial para
+                todos. Nossa equipe dedicada está sempre pronta para ajudar você a
+                encontrar a bebida perfeita para qualquer ocasião.
+            </p>
+
+            <p>
+                Venha nos visitar e descubra por que a Alquimia Taverna é o lugar
+                onde os sabores se encontram e as experiências inesquecíveis
+                começam!
+            </p>
+            </div>
+
+            <!-- MAPA -->
+            <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!4v1769716795490!6m8!1m7!1sOhZQz7c5JehdG2gLWvxcGw!2m2!1d-29.78124521135936!2d-55.79045114237545!3f351.2462899530989!4f-7.196080028929529!5f0.7820865974627469"
+                width="500"
+                height="350"
+                class="map-frame"
+                allowfullscreen=""
+                loading="lazy"
+            >
+            </iframe>
+
+            <h4 class="map-location">Venâncio Aires, 498 - Alegrete</h4>
+            </div>
+        </div>
+    </section>
+
+</div>
+      
+    <!-- ==================== FOOTER ==================== -->
+   <footer class="footer">
+        <div class="footer-container">
+            
+            <!-- LATERAL ESQUERDA -->
+            <div class="footer-left">
+                <p class="footer-brand">@BRISA LM 2025</p>
+            </div>
+
+            <!-- CENTRO -->
+            <div class="footer-center">
+                <a href="https://www.instagram.com/alquimiataverna?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="link-instagram">
+                    <img 
+                     src="IMAGE/icons/26-icon.png"
+                     alt="instagram Alquímia Taverna"
+                     class="footer-icon"
+                     />
+                </a>
+            </div>
+
+            <!-- LATERAL DIREITA -->
+            <div class="footer-right">
+                <h2 class="dev-name">MATHEUS PINTO DA FONTOURA</h2>
+                <h4 class="dev-role">Desenvolvedor</h4>
+            </div>
+
+        </div>
+</footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>

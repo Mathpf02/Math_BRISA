@@ -1,0 +1,275 @@
+/* =========================
+   FONTES
+   ========================= */
+@font-face {
+  font-family: "montserrat-arabic semibold";
+  src: url("../CSS/FONTS/Montserrat-Arabic-SemiBold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "montserrat-arabic 300 light";
+  src: url("../CSS/FONTS/Montserrat-Arabic Light 300.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =========================
+   BASE E BACKGROUND
+   ========================= */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "montserrat-arabic 300 light", sans-serif;
+  color: #a38672;
+
+  /* ✅ Background Original Restaurado */
+  background: linear-gradient(45deg, #2a1711, #74350c, #5b2909);
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   LAYOUT
+   ========================= */
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+}
+
+/* =========================
+   HEADER (Logo UNIPAMPA)
+   ========================= */
+.site-header {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 9999;
+}
+
+.unipampa-logo {
+  width: 90px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+  transition: transform 0.2s ease;
+}
+
+.unipampa-link:hover .unipampa-logo {
+  transform: scale(1.03);
+}
+
+/* =========================
+   ÁREA DE LOGIN
+   ========================= */
+.login-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 20px;
+}
+
+.title-block {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title-block h2 {
+  font-family: "montserrat-arabic semibold", sans-serif;
+  font-size: 2.5em;
+  margin: 10px 0;
+}
+
+.title-block h4 {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+h4 {
+  font-size: 1.1em;
+  margin: 0 0 5px 0;
+  text-align: center;
+}
+
+/* =========================
+   BOTÕES (Padrão Original)
+   ========================= */
+
+/* Google */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "montserrat-arabic semibold", sans-serif;
+  font-size: 1em;
+
+  background: none;
+  color: #a38672;
+  border: 2px solid #a38672;
+  margin-bottom: 20px;
+  transition: all 0.25s ease;
+}
+
+.google-logo {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn:hover,
+.google-btn:active {
+  background-color: transparent;
+  border: 2px solid #a38672;
+  color: #a38672;
+}
+
+/* Submit (Entrar) */
+button[type="submit"] {
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: "montserrat-arabic semibold", sans-serif;
+  cursor: pointer;
+
+  background-color: #a38672;
+  color: #5b2909;
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:active {
+  background-color: transparent;
+  border: 2px solid #a38672;
+  color: #a38672;
+}
+
+/* =========================
+   INPUTS (Opção A - Limpa)
+   ========================= */
+form {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.input-wrap {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.input-wrap.user::before,
+.input-wrap.lock::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  filter: brightness(0) saturate(100%) invert(60%) sepia(14%) saturate(640%)
+    hue-rotate(338deg) brightness(92%) contrast(90%);
+}
+
+/* Espaços para os seus ícones .png */
+.input-wrap.user::before {
+  background-image: url("../../IMAGE/icons/1-icon.png");
+}
+.input-wrap.lock::before {
+  background-image: url("../../IMAGE/icons/2-icon.png");
+}
+
+.input-wrap input {
+  width: 100%;
+  background: transparent;
+  padding: 10px 10px 10px 44px;
+  color: #a38672;
+  outline: none;
+  border: 1px solid #a38672;
+  border-radius: 8px;
+  font-family: "montserrat-arabic 300 light", sans-serif;
+}
+
+.input-wrap input::placeholder {
+  color: rgba(163, 134, 114, 0.85);
+}
+
+/* Link Esquecer */
+.esquecer {
+  display: block;
+  text-align: left;
+  font-size: 0.9em;
+  margin: 0 0 25px 0;
+}
+
+.esquecer a {
+  color: #a38672;
+}
+
+/* =========================
+   BRANDING (Direita)
+   ========================= */
+.branding-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.emblem {
+  width: 500px;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .branding-section {
+    order: -1;
+  }
+  .emblem {
+    width: 320px;
+  }
+}
