@@ -1,3 +1,12 @@
+<?php
+// Verifica se o usuário logado é um FUNCIONÁRIO
+session_start();
+if (!isset($_SESSION['id_usuario']) || $_SESSION['funcao'] != 'admin') {
+  header('Location: sist_login.php');
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,11 +21,11 @@
   <!-- Navbar somente com as logos -->
   <header class="navbar">
     <a class="nav-logo-link" href="https://unipampa.edu.br/portal/" target="_blank" rel="noopener">
-      <img src="../../IMAGE/Logo_UNIPAMPA.png" alt="UNIPAMPA" class="nav-logo">
+      <img src="../../SRC/image/Logo_UNIPAMPA.png" alt="UNIPAMPA" class="nav-logo">
     </a>
 
     <a class="nav-logo-link" href="../../index.html" aria-label="Alquimia Taverna">
-      <img src="../../IMAGE/Logo_ALQUIMIA.png" alt="Alquimia Taverna" class="nav-logo alquimia">
+      <img src="../../SRC/image/Logo_ALQUIMIA.png" alt="Alquimia Taverna" class="nav-logo alquimia">
     </a>
   </header>
 
@@ -30,24 +39,24 @@
 
     <!-- Box com os botões -->
     <div class="box">
-      <a href="t_funcionarios.php" class="menu-button">
-        <img src="../../IMAGE/icons/10-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
+      <a href="adm_funcionarios.php" class="menu-button">
+        <img src="../../SRC/image/icons/10-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
         <strong><span>FUNCIONÁRIOS</span></strong>
       </a>
 
-      <a href="fornecedor.php" class="menu-button">
-        <img src="../../IMAGE/icons/4-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
+      <a href="adm_fornecedor.php" class="menu-button">
+        <img src="../../SRC/image/icons/4-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
         <strong><span>FORNECEDOR</span></strong>
       </a>
 
-      <a href="produtos.php" class="menu-button">
-        <img src="../../IMAGE/icons/15-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
+      <a href="ger_produtos.php" class="menu-button">
+        <img src="../../SRC/image/icons/15-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
         <strong><span>PRODUTOS</span></strong>
       </a>
 
-      <a href="relatorios.php" class="menu-button">
-        <img src="../../IMAGE/icons/22-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
-        <strong><span>RELATÓRIOS</span></strong>  
+      <a href="adm_relatorios.php" class="menu-button">
+        <img src="../../SRC/image/icons/22-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
+        <strong><span>RELATÓRIOS</span></strong>
       </a>
     </div>
   </main>

@@ -59,7 +59,7 @@ body {
 }
 
 .nav-logo {
-  height: 50px;
+  height: 60px;
   width: auto;
   display: block;
   transition: transform 0.2s ease;
@@ -118,11 +118,11 @@ body {
    BOX (logo abaixo dos títulos)
    ========================= */
 .box {
-  width: min(820px, 100%);
+  width: min(500px, 100%);
   padding: 34px;
 
   display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  grid-template-columns: repeat(1, minmax(100px, 1fr));
   gap: 26px;
 }
 

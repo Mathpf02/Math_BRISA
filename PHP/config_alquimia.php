@@ -1,19 +1,15 @@
 <?php
-
+    //Configurações de conexão com o banco de dados
     $dbhost = "localhost";
     $dbusername = "root";
     $dbpassword = "";
-
-    $dbname = "alquimia_taverna";
-        $conexao = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
-   
-    /*TESTE DE CONEXAO
-    if ($conexao->connect_errno) {
-        echo "Erro na conexao: " ;
-    }else {
-        echo "Conexao bem sucedida!";
-    }   
-    */
-
+    $dbname = "mydb";
+    
+    //Realiza a conexao com o banco de dados
+    $conexao = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname);
+    //Verifica se a conexao foi bem sucedida
+    if (!$conexao) {
+        die("Falha na conexão: " . mysqli_connect_error());
+    }
 ?>
 

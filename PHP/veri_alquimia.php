@@ -1,41 +1,48 @@
 <?php
-//print_r($_REQUEST);
+include_once "config_alquimia.php";
+session_start(); //Inicia a sessão
 
-//verifica se o botão foi clicado e se os campos não estão vazios
-if (isset($_REQUEST['submit']) && !empty($_REQUEST['email'] && !empty($_REQUEST['senha']))) {
+// Verifica se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    //acesso
-    include_once('config_alquimia.php');
-    $email = $_REQUEST['email'];
-    $senha = md5($_REQUEST['senha']);
-    //print_r('E-mail: '.$email .'<br>');
-    //print_r('Senha: '.$senha);
+    // Protege contra XSS e SQL Injection
+    $email = htmlspecialchars(trim($_POST['email']));
+    $senha = htmlspecialchars(trim($_POST['senha']));
 
-    $sql = "SELECT * FROM func_alquimia WHERE email = '$email'";
-    $result = $conexao->query($sql);
-    //print_r($sql . '<br>');
-    //print_r($result);
-    if ($result->num_rows > 0) {
-        while ($user_data = mysqli_fetch_assoc($result)) {
-            if ($user_data['senha'] == $senha) {
-                //print_r('Senha correta! <br>');
-                session_start();
-                $_SESSION['usuario_id'] = $user_data['id'];
-                $_SESSION['usuario_nome'] = $user_data['nome'];
-                $_SESSION['usuario_sobrenome'] = $user_data['sobrenome'];
-                $_SESSION['usuario_email'] = $user_data['email'];
+    // Verifica se os campos estão preenchidos
+    if (empty($email) || empty($senha)) {
+        $_SESSION['erro'] = "PREENCA TODOS OS CAMPOS !";
+        header("Location: in/sist_login.php?erro=naoPreenchido");
+        exit();
+    }
+
+
+    // Prepara a consulta para buscar o usuário pelo email
+    $sql = "SELECT * FROM usuarios WHERE email = ?";
+    $sqlteste = "SELECT * FROM usuarios";
+    $stmt2 = mysqli_prepare($conexao, $sqlteste);
+    mysqli_stmt_execute($stmt2);
+    $resultado_teste = mysqli_stmt_get_result($stmt2);
+    $usuarios = mysqli_fetch_all($resultado_teste, MYSQLI_ASSOC);
+    foreach ($usuarios as $usuario) {
+        echo "ID: " . $usuario['id_usuario'] . " - Nome: " . $usuario['nome'] . " - Email: " . $usuario['email'] . " - Senha: " . $usuario['senha'] . " - Função: " . $usuario['funcao'] . "<br>";
+        //compara emails e senhas]
+        $emailCerto = $usuario['email'];
+        $senhaCerto = $usuario['senha'];
+        if ($email == $usuario['email'] && $senha == $usuario['senha']) {
+            echo 'logado';
+            $_SESSION['id_usuario'] = $usuario['id_usuario'];
+            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['funcao'] = $usuario['funcao'];
+            if ($usuario['funcao'] == 'admin') {
+                header("Location: in/adm_menu.php");
+            } else if ($usuario['funcao'] == 'funci') {
+                header("Location: in/func_menu.php");
             }
+        } else {
+            echo 'credencial errada <br>';
+            echo "$email != $emailCerto <br>";
+            echo "$senha != $senhaCerto <br>";
         }
     }
-
-    if (mysqli_num_rows($result) < 1) {
-        print_r('USUÁRIO NÃO LOCALIZADOS! <br>');
-        header('Location: in/t_login.php');
-    } else {
-        print_r('USUÁRIO LOCALIZADO! <br>');
-        header('Location: in/t_menu.php');
-    }
-} else {
-    header('Location: in/t_menu.php');
-    exit();
 }

@@ -1,16 +1,11 @@
-
 <?php
-/*
-// =======================================
-// CONEXÃO COM BANCO DE DADOS
-// =======================================
-$db = new PDO("mysql:host=localhost;dbname=alquimia_taverna", "root", "");
+// Verifica se o usuário logado é um ADMINISTRADOR
+session_start();
+if (!isset($_SESSION['id_usuario']) || $_SESSION['funcao'] != 'admin') {
+    header('Location: sist_login.php');
+    exit();
+}
 
-// Busca todos os funcionários
-$stmt = $db->query("SELECT id, nome, cpf, email, cargo, data_admissao FROM funcionarios ORDER BY nome");
-$funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-*/
 ?>
 
 <!DOCTYPE html>
@@ -28,11 +23,11 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- NAVBAR -->
     <header class="navbar">
         <a class="nav-logo-link" href="https://unipampa.edu.br/portal/" target="_blank">
-            <img src="../../IMAGE/Logo_UNIPAMPA.png" class="nav-logo">
+            <img src="../../SRC/image/Logo_UNIPAMPA.png" class="nav-logo">
         </a>
 
         <a class="nav-logo-link" href="../../index.html">
-            <img src="../../IMAGE/Logo_ALQUIMIA.png" class="nav-logo alquimia">
+            <img src="../../SRC/image/Logo_ALQUIMIA.png" class="nav-logo alquimia">
         </a>
     </header>
 
@@ -50,7 +45,7 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- BOTÃO ADICIONAR -->
             <div class="action-bar">
-                <a href="cadastro.php" class="btn-adicionar"><strong>+ CADASTRAR</strong></a>
+                <a href="adm_cadastros.php" class="btn-adicionar"><strong>+ CADASTRAR</strong></a>
             </div>
 
             <!-- TABELA DE FUNCIONÁRIOS -->
@@ -62,7 +57,7 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>SOBRENOME</th>
                         <th>CPF</th>
                         <th>E-MAIL</th>
-                        <th>TELEFONE</th>
+                        <th>FUNÇÃO</th>
                         <th> </th>
                     </tr>
                 </thead>
@@ -75,7 +70,7 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo htmlspecialchars($func['sobrenome']); ?></td>
                                 <td><?php echo htmlspecialchars($func['cpf']); ?></td>
                                 <td><?php echo htmlspecialchars($func['email']); ?></td>
-                                <td><?php echo htmlspecialchars($func['telefone']); ?></td>
+                                <td><?php echo htmlspecialchars($func['funcao']); ?></td>
                                 <td class="col-acoes">
                                     <a href="funcionarios_editar.php?id=<?php echo $func['id']; ?>" class="btn-editar">EDITAR</a>
                                     <a href="funcionarios_deletar.php?id=<?php echo $func['id']; ?>" class="btn-deletar" onclick="return confirm('Tem certeza?')">DELETAR</a>
@@ -94,7 +89,7 @@ $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- BOTÃO VOLTAR -->
         <div class="back-button">
-            <a href="menu.html">← VOLTAR AO MENU</a>
+            <a href="adm_menu.php">← VOLTAR AO MENU</a>
         </div>
 
     </main>

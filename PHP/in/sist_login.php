@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -11,7 +13,7 @@
 <body>
     <header class="site-header">
         <a class="unipampa-link" href="https://unipampa.edu.br/portal/" target="_blank" rel="noopener">
-            <img src="../../IMAGE/Logo_UNIPAMPA.png" alt="UNIVERSIDADE FEDERAL DO PAMPA - UNIPAMPA" class="unipampa-logo">
+            <img src="../../SRC/image/Logo_UNIPAMPA.png" alt="UNIVERSIDADE FEDERAL DO PAMPA - UNIPAMPA" class="unipampa-logo">
         </a>
     </header>
 
@@ -26,7 +28,7 @@
                 </div>
 
                 <button class="google-btn" type="button">
-                    <img src="../../IMAGE/Logo_GOOGLE.png" alt="Logo_GOOGLE" class="google-logo">
+                    <img src="../../SRC/image/Logo_GOOGLE.png" alt="Logo_GOOGLE" class="google-logo">
                     <strong>ACESSAR COM GOOGLE</strong>
                 </button>
             </div>
@@ -50,7 +52,7 @@
         </div>
 
         <div class="branding-section">
-            <img src="../../IMAGE/Logo_ALQUIMIA.png" alt="ALQUÍMIA TAVERNA" class="emblem">
+            <img src="../../SRC/image/Logo_ALQUIMIA.png" href="../../index.html" alt="ALQUÍMIA TAVERNA" class="emblem">
         </div>
     </div>
     </div>

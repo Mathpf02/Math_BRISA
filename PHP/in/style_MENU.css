@@ -3,13 +3,13 @@
    ========================= */
 @font-face {
   font-family: "montserrat-arabic semibold";
-  src: url("../CSS/FONTS/Montserrat-Arabic-SemiBold.otf") format("opentype");
+  src: url("../../SRC/fonts/Montserrat-Arabic-SemiBold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "montserrat-arabic 300 light";
-  src: url("../CSS/FONTS/Montserrat-Arabic Light 300.otf") format("opentype");
+  src: url("../../SRC/fonts/Montserrat-Arabic-Light300.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }

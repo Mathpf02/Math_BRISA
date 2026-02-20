@@ -73,7 +73,7 @@ body {
 }
 
 .unipampa-logo {
-  width: 120px;
+  width: 140px;
   height: auto;
   display: block;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
@@ -209,10 +209,10 @@ form {
 
 /* Espaços para os seus ícones .png */
 .input-wrap.user::before {
-  background-image: url("../../IMAGE/icons/1-icon.png");
+  background-image: url("../../SRC/image/icons/1-icon.png");
 }
 .input-wrap.lock::before {
-  background-image: url("../../IMAGE/icons/2-icon.png");
+  background-image: url("../../SRC/image/icons/2-icon.png");
 }
 
 .input-wrap input {
@@ -253,7 +253,7 @@ form {
 }
 
 .emblem {
-  width: 500px;
+  width: 650px;
   height: auto;
   display: block;
 }

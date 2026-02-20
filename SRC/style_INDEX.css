@@ -1,12 +1,12 @@
 /* ========================= FONTES ========================= */
 @font-face {
   font-family: "montserrat-arabic semibold";
-  src: url("../CSS/FONTS/Montserrat-Arabic-SemiBold.otf");
+  src: url("../SRC/fonts/Montserrat-Arabic-SemiBold.otf");
 }
 
 @font-face {
   font-family: "montserrat-arabic light";
-  src: url("../CSS/FONTS/Montserrat-Arabic\ Light\ 300.otf");
+  src: url("../SRC/fonts/Montserrat-Arabic-Light300.otf");
 }
 
 /* ========================= BASE ========================= */
@@ -166,13 +166,13 @@ body {
 
 /* ========================= ALQUÍMIA ========================= */
 .alquimia-section {
-  margin: 230px auto 200px auto;
+  margin: 250px auto 200px auto;
 }
 
 /* ========================= CONTAINER ========================= */
 .container {
   width: 100%;
-  padding-left: 20px;
+  padding-left: 20spx;
   padding-right: 20px;
 }
 
@@ -183,7 +183,7 @@ body {
 
 /* ========================= PÁGINAS SEM HERO ========================= */
 .equipe-page-section {
-  margin: 200px auto 50px auto;
+  margin: 200px auto 0px auto;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -193,9 +193,10 @@ body {
 /* ========================= LAYOUT ALQUÍMIA ========================= */
 .alquimia-layout {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: nowrap;
   align-items: center;
+  gap: 200px;
 }
 
 .tittle {
@@ -283,7 +284,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 50px;
   max-width: 1000px;
-  margin: 40px auto 200px auto;
+  margin: 40px auto 0px auto;
   justify-items: center;
 }
 
@@ -303,8 +304,8 @@ body {
 
 .equipe-image {
   width: 100%;
-  max-width: 650px;
-  height: 650px;
+  max-width: 450px;
+  height: 550px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -451,7 +452,7 @@ body {
 
 /* ========================= FOOTER ========================= */
 .footer {
-  padding: 10px 20px;
+  margin: 90px auto auto;
   color: #a38672;
 }
 
