@@ -1,7 +1,7 @@
 <?php
 // Verifica se o usuário logado é um FUNCIONÁRIO
 session_start();
-if (!isset($_SESSION['id_usuario']) || $_SESSION['funcao'] != 'funci') {
+if (!isset($_SESSION['id_usuario']) || $_SESSION['funcao'] != 'funcionario') {
     // header('Location: sist_login.php');
     // exit();
 }

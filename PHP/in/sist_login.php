@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -35,8 +33,15 @@
             </br>
 
             <h4>ENTRE COM SEU USUÁRIO E SENHA</h4>
-
-            <form action="../veri_alquimia.php" method="POST">
+            <?php if (isset($_SESSION['erro'])): ?>
+                <div style="color: #ff4d4d; text-align: center; margin-bottom: 10px; font-weight: bold;">
+                    <?php
+                    echo $_SESSION['erro'];
+                    unset($_SESSION['erro']);
+                    ?>
+                </div>
+            <?php endif; ?>
+            <form action="../config/verif_login.php" method="POST">
                 <div class="input-wrap user">
                     <input type="email" name="email" placeholder="E-MAIL / OU USUÁRIO" required>
                 </div>

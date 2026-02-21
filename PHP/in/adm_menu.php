@@ -1,10 +1,7 @@
 <?php
 // Verifica se o usuário logado é um FUNCIONÁRIO
-session_start();
-if (!isset($_SESSION['id_usuario']) || $_SESSION['funcao'] != 'admin') {
-  header('Location: sist_login.php');
-  exit();
-}
+require_once('../config/common.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -39,10 +36,17 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['funcao'] != 'admin') {
 
     <!-- Box com os botões -->
     <div class="box">
-      <a href="adm_funcionarios.php" class="menu-button">
-        <img src="../../SRC/image/icons/10-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
-        <strong><span>FUNCIONÁRIOS</span></strong>
-      </a>
+      <?php
+      if (eh_adminstrador()) {
+      ?>
+        <a href="adm_funcionarios.php" class="menu-button">
+          <img src="../../SRC/image/icons/10-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
+          <strong><span>FUNCIONÁRIOS</span></strong>
+        </a>
+
+      <?php
+      }
+      ?>
 
       <a href="adm_fornecedor.php" class="menu-button">
         <img src="../../SRC/image/icons/4-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
