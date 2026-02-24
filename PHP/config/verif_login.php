@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($usuario = mysqli_fetch_assoc($resultado)) {
         // Verificação de senha (se você usou password_hash no cadastro)
         // Se ainda estiver usando texto puro, use: if ($senha == $usuario['senha'])
-        if (password_verify($senha, $usuario['senha']) || $senha == $usuario['senha']) {
+        if (password_verify($senha, $usuario['senha'])) {
 
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nome'] = $usuario['nome'];

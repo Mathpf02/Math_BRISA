@@ -1,6 +1,10 @@
 <?php
 // Verifica se o usuário logado é um FUNCIONÁRIO
 require_once('../config/common.php');
+if (!isset($_SESSION['id_usuario'])) {
+  header('Location: sist_login.php');
+  exit();
+}
 
 ?>
 
@@ -16,14 +20,18 @@ require_once('../config/common.php');
 
 <body>
   <!-- Navbar somente com as logos -->
-  <header class="navbar">
-    <a class="nav-logo-link" href="https://unipampa.edu.br/portal/" target="_blank" rel="noopener">
-      <img src="../../SRC/image/Logo_UNIPAMPA.png" alt="UNIPAMPA" class="nav-logo">
-    </a>
+  <header class="header">
+    <div class="header-container">
+      <a href="../../index.html" class="logo-link">
+        <img src="../../SRC/image/Logo_ALQUIMIA.png" alt="Alquimia Taverna" class="logo-alquimia" />
+      </a>
 
-    <a class="nav-logo-link" href="../../index.html" aria-label="Alquimia Taverna">
-      <img src="../../SRC/image/Logo_ALQUIMIA.png" alt="Alquimia Taverna" class="nav-logo alquimia">
-    </a>
+      <nav class="nav-menu" aria-label="Navegação do Sistema">
+        <a class="nav-btn" href="adm_menu.php">MENU</a>
+        <span class="nav-divider">|</span>
+        <a href="../config/verif_logout.php" class="nav-btn btn-sair">SAIR</a>
+      </nav>
+    </div>
   </header>
 
   <!-- Conteúdo central -->
@@ -37,31 +45,27 @@ require_once('../config/common.php');
     <!-- Box com os botões -->
     <div class="box">
       <?php
-      if (eh_adminstrador()) {
-      ?>
+      if (eh_adminstrador()): ?>
         <a href="adm_funcionarios.php" class="menu-button">
           <img src="../../SRC/image/icons/10-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
           <strong><span>FUNCIONÁRIOS</span></strong>
         </a>
+        <a href="adm_fornecedor.php" class="menu-button">
+          <img src="../../SRC/image/icons/4-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
+          <strong><span>FORNECEDOR</span></strong>
+        </a>
+        <a href="adm_relatorios.php" class="menu-button">
+          <img src="../../SRC/image/icons/22-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
+          <strong><span>RELATÓRIOS</span></strong>
+        </a>
 
-      <?php
-      }
-      ?>
-
-      <a href="adm_fornecedor.php" class="menu-button">
-        <img src="../../SRC/image/icons/4-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
-        <strong><span>FORNECEDOR</span></strong>
-      </a>
+      <?php endif; ?>
 
       <a href="ger_produtos.php" class="menu-button">
         <img src="../../SRC/image/icons/15-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
         <strong><span>PRODUTOS</span></strong>
       </a>
 
-      <a href="adm_relatorios.php" class="menu-button">
-        <img src="../../SRC/image/icons/22-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
-        <strong><span>RELATÓRIOS</span></strong>
-      </a>
     </div>
   </main>
 </body>

@@ -7,7 +7,10 @@
     <title>Login - Sistema de Gestão de Estoque</title>
     <link rel="stylesheet" href="style_LOGIN.css">
 </head>
+<?php 
+    session_start();
 
+?>
 <body>
     <header class="site-header">
         <a class="unipampa-link" href="https://unipampa.edu.br/portal/" target="_blank" rel="noopener">
