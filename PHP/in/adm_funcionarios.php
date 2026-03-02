@@ -53,7 +53,7 @@ unset($_SESSION['pesquisa']);
 
         <!-- TÍTULOS -->
         <div class="title-block">
-            <h2><strong>FUNCIONÁRIOS</strong></h2>
+            <h2><strong>CONTROLE DE FUNCIONÁRIOS</strong></h2>
             <h4>SISTEMA DE GESTÃO DE ESTOQUE</h4>
         </div>
 
@@ -61,8 +61,8 @@ unset($_SESSION['pesquisa']);
         <div class="box">
             <div class="pesquisa-cadastro">
 
-                <form action="../config/co.php" method="POST" class="form">
-                    <input type="text" class="campo-pesquisa" placeholder= "NOME | SOBRENOME | CPF | E-MAIL" name="pesquisa" id="pesquisa">
+                <form action="../config/config_pesquisa.php" method="POST" class="form">
+                    <input type="text" class="campo-pesquisa" placeholder="NOME | SOBRENOME | CPF | E-MAIL" name="pesquisa" id="pesquisa">
                     <input type="submit" value="PESQUISA" class="btn-adicionar">
                 </form>
                 <!-- BOTÃO ADICIONAR -->
@@ -132,13 +132,6 @@ unset($_SESSION['pesquisa']);
                 </tbody>
             </table>
 
-        </div>
-
-        <!-- BOTÃO VOLTAR -->
-        <div class="back-button">
-            <a href="adm_menu.php">
-                <strong>VOLTAR AO MENU</strong>
-            </a>
         </div>
 
     </main>

@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($usuario['funcao'] == 'administrador') {
                 header("Location: ../in/adm_menu.php");
             } else {
-                header("Location: ../in/func_menu.php");
+                header("Location: ../in/adm_menu.php");
             }
             exit();
         } else {

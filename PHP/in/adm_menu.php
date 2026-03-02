@@ -23,13 +23,15 @@ if (!isset($_SESSION['id_usuario'])) {
   <header class="header">
     <div class="header-container">
       <a href="../../index.html" class="logo-link">
-        <img src="../../SRC/image/Logo_ALQUIMIA.png" alt="Alquimia Taverna" class="logo-alquimia" />
+        <!-- A imagem esta com ENDEREÇO ERRADO - CSS precisa de alteração  -->
+        <img src="../SRC/image/Logo_ALQUIMIA.png" alt="Alquimia Taverna" class="logo-unipampa" />
       </a>
 
-      <nav class="nav-menu" aria-label="Navegação do Sistema">
+      <nav class="nav-menu" aria-label="Navegação principal">
+
         <a class="nav-btn" href="adm_menu.php">MENU</a>
         <span class="nav-divider">|</span>
-        <a href="../config/verif_logout.php" class="nav-btn btn-sair">SAIR</a>
+        <a href="../config/verif_logout.php" class="nav-btn btn-entrar">SAIR</a>
       </nav>
     </div>
   </header>

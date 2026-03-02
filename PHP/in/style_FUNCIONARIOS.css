@@ -38,6 +38,74 @@ body {
    NAVBAR
    ========================= */
 .navbar {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 14px 26px;
+  }
+
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .logo-unipampa {
+    height: 70px;
+    width: auto;
+    transition: 0.3s ease;
+  }
+
+  .logo-unipampa:hover {
+    transform: scale(1.05);
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .nav-btn {
+    background: transparent;
+    border: 2px solid transparent;
+    color: #a38672;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: "montserrat-arabic semibold";
+    font-size: 0.95em;
+    border-radius: 6px;
+    transition: 0.3s ease;
+    text-decoration: none;
+  }
+
+  .nav-btn:hover {
+    border: 2px solid #a38672;
+  }
+
+  .nav-divider {
+    color: #a38672;
+    font-size: 1.5em;
+  }
+
+  .btn-entrar {
+    background: transparent;
+    color: #a38672;
+    border: 2px solid #a38672;
+    text-decoration: none;
+  }
+
+  .btn-entrar:hover {
+    background: #a38672;
+    color: #2a1711;
+  }
+
   width: 100%;
   position: fixed;
   top: 0;

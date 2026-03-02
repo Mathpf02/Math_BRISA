@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,10 +8,7 @@
     <title>Login - Sistema de Gestão de Estoque</title>
     <link rel="stylesheet" href="style_LOGIN.css">
 </head>
-<?php 
-    session_start();
 
-?>
 <body>
     <header class="site-header">
         <a class="unipampa-link" href="https://unipampa.edu.br/portal/" target="_blank" rel="noopener">
@@ -53,7 +51,7 @@
                     <input type="password" name="senha" placeholder="SENHA" required>
                 </div>
 
-                <span class="esquecer">Esqueceu a senha? <a href="t_recuperar.php"><strong>Recuperar Senha</strong></a></span>
+                <span class="esquecer">Esqueceu a senha? <a href="sist_recuperar.php"><strong>Recuperar Senha</strong></a></span>
 
                 <button type="submit"><strong>ENTRAR</strong></button>
             </form>
@@ -62,7 +60,6 @@
         <div class="branding-section">
             <img src="../../SRC/image/Logo_ALQUIMIA.png" href="../../index.html" alt="ALQUÍMIA TAVERNA" class="emblem">
         </div>
-    </div>
     </div>
 </body>
 
