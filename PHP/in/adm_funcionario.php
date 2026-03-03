@@ -4,7 +4,7 @@
 require_once('../config/common.php');
 require_once('../config/config_alquimia.php');
 
-if (!eh_adminstrador()) {
+if (!eh_administrador()) {
     header('Location: sist_login.php');
     exit();
 }
@@ -67,7 +67,7 @@ unset($_SESSION['pesquisa']);
                 </form>
                 <!-- BOTÃO ADICIONAR -->
                 <div class="action-bar">
-                    <a href="adm_cadastros.php" class="btn-adicionar"><strong>+ CADASTRAR</strong></a>
+                    <a href="cad_funcionario.php" class="btn-adicionar"><strong>+ CADASTRAR</strong></a>
                 </div>
                 <?php if (isset($_SESSION['msg_status'])): ?>
                     <div style="background-color: #d4edda; 
@@ -111,7 +111,7 @@ unset($_SESSION['pesquisa']);
                                     <a href="../config/config_pdf.php?id=<?php echo $func['id_usuario']; ?>" class="btn-pdf">
                                         <strong>PDF</strong>
                                     </a>
-                                    <a href="adm_cadastros.php?id=<?php echo $func['id_usuario']; ?>" class="btn-editar">
+                                    <a href="cad_funcionario.php?id=<?php echo $func['id_usuario']; ?>" class="btn-editar">
                                         <strong>EDITAR</strong>
                                     </a>
                                     <a href="../config/config_suprimir.php?id=<?php echo $func['id_usuario']; ?>" class="btn-suprimir"

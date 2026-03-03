@@ -1,149 +1,286 @@
--- MySQL Workbench Forward Engineering (ajustado p/ MariaDB)
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 02/03/2026 às 22:00
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8;
-USE `mydb`;
 
--- -----------------------------------------------------
--- Table `mydb`.`USUARIOS`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`USUARIOS` (
-  `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `cpf` CHAR(15) NOT NULL,
-  `nome` VARCHAR(255) NOT NULL,
-  `sobrenome` VARCHAR(255) NOT NULL,
-  `email` VARCHAR(255) NOT NULL,
-  `senha` VARCHAR(255) NOT NULL,
-  `ft_perfil` VARCHAR(255) NULL,
-  PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `cpf_UNIQUE` (`cpf`),
-  UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
--- -----------------------------------------------------
--- Table `mydb`.`AUTORIZADOS`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`AUTORIZADOS` (
-  `id_autorizados` INT NOT NULL AUTO_INCREMENT,
-  `id_usuario` INT NOT NULL,
-  `funcao` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id_autorizados`),
-  INDEX `idx_autorizados_id_usuario` (`id_usuario`),
-  CONSTRAINT `fk_autorizados_usuario`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `mydb`.`USUARIOS` (`id_usuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE=InnoDB;
+--
+-- Banco de dados: `mydb`
+--
 
--- -----------------------------------------------------
--- Table `mydb`.`MARGEM`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`MARGEM` (
-  `id_margem` INT NOT NULL AUTO_INCREMENT,
-  `valor` DECIMAL(10,2) NOT NULL,
-  `date` DATE NOT NULL,
-  PRIMARY KEY (`id_margem`)
-) ENGINE=InnoDB;
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `mydb`.`FORNECEDOR`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`FORNECEDOR` (
-  `id_fornecedor` INT NOT NULL AUTO_INCREMENT,
-  `cpf` CHAR(15) NULL,
-  `cnpj` CHAR(20) NULL,
-  `nome` VARCHAR(255) NOT NULL,
-  `sobrenome` VARCHAR(255) NOT NULL,
-  `email` VARCHAR(100) NULL,
-  `telefone` VARCHAR(20) NOT NULL,
-  `ft_rg` VARCHAR(255) NOT NULL,
-  `ft_perfil` VARCHAR(255) NULL,
-  `tp_produto` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_fornecedor`),
-  UNIQUE KEY `fornecedor_email_UNIQUE` (`email`),
-  UNIQUE KEY `fornecedor_cpf_UNIQUE` (`cpf`),
-  UNIQUE KEY `fornecedor_cnpj_UNIQUE` (`cnpj`)
-) ENGINE=InnoDB;
+--
+-- Estrutura para tabela `autorizados`
+--
 
--- -----------------------------------------------------
--- Table `mydb`.`PRODUTO`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`PRODUTO` (
-  `id_produto` INT NOT NULL AUTO_INCREMENT,
-  `id_fornecedor` INT NULL,
-  `nome` VARCHAR(255) NOT NULL,
-  `classificacao` VARCHAR(255) NOT NULL,
-  `tipo` VARCHAR(255) NOT NULL,
-  `validade` DATE NOT NULL,
-  `preco` DECIMAL(10,2) NOT NULL,
-  `status` TINYINT NOT NULL,
-  PRIMARY KEY (`id_produto`),
-  INDEX `idx_produto_id_fornecedor` (`id_fornecedor`),
-  CONSTRAINT `fk_produto_fornecedor`
-    FOREIGN KEY (`id_fornecedor`)
-    REFERENCES `mydb`.`FORNECEDOR` (`id_fornecedor`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE
-) ENGINE=InnoDB;
+CREATE TABLE `autorizados` (
+  `id_usuario` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `funcao` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- -----------------------------------------------------
--- Table `mydb`.`comidas_PRODUTOS`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`comidas_PRODUTOS` (
-  `id_prato` INT NOT NULL AUTO_INCREMENT,
-  `id_produto` INT NOT NULL,
-  `porcao` VARCHAR(255) NOT NULL,
-  `descricao` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id_prato`),
-  INDEX `idx_comidas_id_produto` (`id_produto`),
-  CONSTRAINT `fk_comidas_produto`
-    FOREIGN KEY (`id_produto`)
-    REFERENCES `mydb`.`PRODUTO` (`id_produto`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE=InnoDB;
+--
+-- Despejando dados para a tabela `autorizados`
+--
 
--- -----------------------------------------------------
--- Table `mydb`.`bebidas_PRODUTO`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`bebidas_PRODUTO` (
-  `id_bebida` INT NOT NULL AUTO_INCREMENT,
-  `id_produto` INT NOT NULL,
-  `tipo` VARCHAR(255) NOT NULL,
-  `uva` VARCHAR(255) NULL,
-  `safra` VARCHAR(100) NULL,
-  `peso_L` DECIMAL(10,2) NOT NULL,
-  `nacionalidade` VARCHAR(100) NULL,
-  `ft_produto` VARCHAR(255) NULL,
-  PRIMARY KEY (`id_bebida`),
-  INDEX `idx_bebidas_id_produto` (`id_produto`),
-  CONSTRAINT `fk_bebidas_produto`
-    FOREIGN KEY (`id_produto`)
-    REFERENCES `mydb`.`PRODUTO` (`id_produto`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE=InnoDB;
+INSERT INTO `autorizados` (`id_usuario`, `nome`, `email`, `funcao`) VALUES
+(4, '', '', 'administrador'),
+(5, '', '', 'funcionario'),
+(6, '', '', 'inativo'),
+(7, '', '', 'funcionário'),
+(8, '', '', 'funcionario'),
+(9, '', '', 'administrador'),
+(10, '', '', 'administrador'),
+(11, '', '', 'funcionario'),
+(12, '', '', 'funcionário'),
+(13, '', '', 'inativo'),
+(14, '', '', 'funcionário'),
+(15, '', '', 'administrador'),
+(16, '', '', 'funcionário');
 
--- -----------------------------------------------------
--- Table `mydb`.`ESTOQUE`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`ESTOQUE` (
-  `id_estoque` INT NOT NULL AUTO_INCREMENT,
-  `id_produto` INT NOT NULL,
-  `quantidade` INT NOT NULL,
-  PRIMARY KEY (`id_estoque`),
-  INDEX `idx_estoque_id_produto` (`id_produto`),
-  CONSTRAINT `fk_estoque_produto`
-    FOREIGN KEY (`id_produto`)
-    REFERENCES `mydb`.`PRODUTO` (`id_produto`)
-    ON DELETE RESTRICT
-    ON UPDATE CASCADE
-) ENGINE=InnoDB;
+-- --------------------------------------------------------
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+--
+-- Estrutura para tabela `bebidas_produto`
+--
+
+CREATE TABLE `bebidas_produto` (
+  `id_bebida` int(11) NOT NULL,
+  `id_produto` int(11) NOT NULL,
+  `tipo` varchar(255) NOT NULL,
+  `uva` varchar(255) DEFAULT NULL,
+  `safra` varchar(100) DEFAULT NULL,
+  `peso_L` decimal(10,2) NOT NULL,
+  `nacionalidade` varchar(100) DEFAULT NULL,
+  `ft_produto` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `comidas_produtos`
+--
+
+CREATE TABLE `comidas_produtos` (
+  `id_prato` int(11) NOT NULL,
+  `id_produto` int(11) NOT NULL,
+  `porcao` varchar(255) NOT NULL,
+  `descricao` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `estoque`
+--
+
+CREATE TABLE `estoque` (
+  `id_estoque` int(11) NOT NULL,
+  `id_produto` int(11) NOT NULL,
+  `quantidade` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `fornecedor`
+--
+
+CREATE TABLE `fornecedor` (
+  `id_fornecedor` int(11) NOT NULL,
+  `cpf_cnpj` varchar(45) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `sobrenome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telefone` int(11) NOT NULL,
+  `ft_rg` varchar(255) NOT NULL,
+  `ft_perfil` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `margem`
+--
+
+CREATE TABLE `margem` (
+  `id_margem` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `valor` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `produto`
+--
+
+CREATE TABLE `produto` (
+  `id_produto` int(11) NOT NULL,
+  `id_fornecedor` int(11) DEFAULT NULL,
+  `nome` varchar(100) DEFAULT NULL,
+  `descrição` varchar(100) DEFAULT NULL,
+  `classificacao` varchar(100) DEFAULT NULL,
+  `valor_custo` decimal(10,0) DEFAULT NULL,
+  `valor_produto` decimal(10,0) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `cpf` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `sobrenome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(100) NOT NULL,
+  `ft_perfil` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Despejando dados para a tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `cpf`, `nome`, `sobrenome`, `email`, `senha`, `ft_perfil`) VALUES
+(4, 2147483647, 'Matheus', 'da Fontoura', 'mathp.f02@gmail.com', '$2y$10$5gNcPnmuAa2CTPLr6aClUOFJV2jFcaxY4t81pPFwh6iZiVTC3y.GG', NULL),
+(5, 2147483647, 'Vitor', 'da Fontoura', 'vitor@gmail.com', '$2y$10$Uw7Cu./CO7cEznOkNwPwC.eQek.ngmwr2svhZFLmgUcpDJ6yAdlC6', NULL),
+(6, 2147483647, 'Rafael', 'Nogueira', 'rafa@gmail.com', '$2y$10$LqONxNfLSuqC5n.b69oUcu9NqC4i1BOg6iTjoxc3el80rxJ82BZoK', NULL),
+(7, 2147483647, 'Rafael', 'Nogueira', 'rafa@gmail.com', '$2y$10$g4/MAk.vyxBZXObwPtgfmeeDCdCuR6yElZmtQnR2qPT6whQYVjf2q', NULL),
+(8, 2147483647, 'Fernando ', 'Brongar', 'fernando@gmail.com', '$2y$10$yjkw/J16IcbkGP6nDKZhUeSBl8eAMrDQveDDiZyA2Pc7avr8OCtn.', NULL),
+(9, 0, 'Camila', 'Pessamiglio', 'camila@gmail.com', '$2y$10$dvz9zTIWDxzIO5uAkT4H5uBAM4zDEhtqCmmfZL8FiBIud0RjX4UWa', NULL),
+(10, 0, 'Dastan', 'da Fontoura', 'dastan@gmail.com', '$2y$10$55Bv9Ns3o3S9jHKvh3ptiub7QioC/svmkBanAkibkGyd7g0aZdJeS', NULL),
+(11, 320130321, 'teste1', 'testado', 'teste1@gmail.com', '$2y$10$prRihOZvI8t2fDqkz81i9u4DuqIbCdyZ5.CJvxZZqHTfYln3a3.jm', NULL),
+(12, 3213213, 'teste2', '2', 'matheusfontoura3.aluno2@unipampa.edu.br', '$2y$10$yVVBqIHzghZBsMdGm3SXTONncl//jC/R3hWxlZppCZnYCpqv28f3m', NULL),
+(13, 421312313, 'Matheus', 'da Fontoura', 'matheusfontoura.aluno@unipampa.edu.br', '$2y$10$iPIfX5dlCjGM3hfG7TW9eeu/aLp4StnsiPstUORAmyFUsOp6VvzPS', NULL),
+(14, 412321, 'Matheus', 'da Fontoura', 'matheusfontoura.aluno@unipampa.edu.br', '$2y$10$sC/cDTUMw/D/lYOmEi945eAcw5TdoqPskAA0N9ZiqmFlIlyuyTl2G', NULL),
+(15, 123, 'Matheus', 'da Fontoura', 'matheusfontoura.aluno@unipampa.edu.br', '$2y$10$y/0LTy6Y.BeQI7nxjxjvN.qsZSTXGhT9QTVWuBsaOlqm0yF8kuHoW', NULL),
+(16, 1, 'Thaís ', 'Oliveira', 'thais@gmail.com', '$2y$10$ZFgHvsNKHmjit1rMOXewk.9lNFGqk09RNa3gykgKB27p3OtxqVd8e', NULL);
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `autorizados`
+--
+ALTER TABLE `autorizados`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
+-- Índices de tabela `bebidas_produto`
+--
+ALTER TABLE `bebidas_produto`
+  ADD PRIMARY KEY (`id_bebida`),
+  ADD KEY `idx_bebidas_id_produto` (`id_produto`);
+
+--
+-- Índices de tabela `comidas_produtos`
+--
+ALTER TABLE `comidas_produtos`
+  ADD PRIMARY KEY (`id_prato`);
+
+--
+-- Índices de tabela `estoque`
+--
+ALTER TABLE `estoque`
+  ADD PRIMARY KEY (`id_estoque`),
+  ADD KEY `idx_estoque_id_produto` (`id_produto`);
+
+--
+-- Índices de tabela `fornecedor`
+--
+ALTER TABLE `fornecedor`
+  ADD PRIMARY KEY (`id_fornecedor`);
+
+--
+-- Índices de tabela `margem`
+--
+ALTER TABLE `margem`
+  ADD PRIMARY KEY (`id_margem`);
+
+--
+-- Índices de tabela `produto`
+--
+ALTER TABLE `produto`
+  ADD PRIMARY KEY (`id_produto`);
+
+--
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `bebidas_produto`
+--
+ALTER TABLE `bebidas_produto`
+  MODIFY `id_bebida` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `comidas_produtos`
+--
+ALTER TABLE `comidas_produtos`
+  MODIFY `id_prato` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `estoque`
+--
+ALTER TABLE `estoque`
+  MODIFY `id_estoque` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `bebidas_produto`
+--
+ALTER TABLE `bebidas_produto`
+  ADD CONSTRAINT `fk_bebidas_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Restrições para tabelas `comidas_produtos`
+--
+ALTER TABLE `comidas_produtos`
+  ADD CONSTRAINT `id_produto` FOREIGN KEY (`id_prato`) REFERENCES `produto` (`id_produto`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Restrições para tabelas `estoque`
+--
+ALTER TABLE `estoque`
+  ADD CONSTRAINT `fk_estoque_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`) ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

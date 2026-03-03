@@ -58,7 +58,9 @@
         </div>
 
         <div class="branding-section">
-            <img src="../../SRC/image/Logo_ALQUIMIA.png" href="../../index.html" alt="ALQUÍMIA TAVERNA" class="emblem">
+            <a href="../../index.html">
+                <img src="../../SRC/image/Logo_ALQUIMIA.png" alt="ALQUÍMIA TAVERNA" class="emblem">
+            </a>
         </div>
     </div>
 </body>

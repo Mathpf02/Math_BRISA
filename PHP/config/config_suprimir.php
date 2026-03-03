@@ -3,7 +3,7 @@ require_once ('common.php'); // Para usar eh_adminstrador()
 require_once ('config_alquimia.php');
 
 // 1. Segurança: Apenas administradores podem executar esta ação
-if (!eh_adminstrador()) {
+if (!eh_administrador()) {
     header("Location: ../in/sist_login.php");
     exit();
 }
@@ -40,5 +40,5 @@ if (isset($_GET['id'])) {
 }
 
 // 5. Redireciona de volta para a listagem
-header("Location: ../in/adm_funcionarios.php");
+header("Location: ../in/adm_funcionario.php");
 exit();

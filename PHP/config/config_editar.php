@@ -19,5 +19,5 @@ if (isset($_POST['update'])) {
     mysqli_stmt_bind_param($stmtA, "si", $funcao, $id);
     mysqli_stmt_execute($stmtA);
 
-    header("Location: ../in/adm_funcionarios.php");
+    header("Location: ../in/adm_funcionario.php");
 }

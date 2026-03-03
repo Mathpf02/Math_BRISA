@@ -1,9 +1,9 @@
 <?php
 // Verifica se o usuário logado é um FUNCIONÁRIO
 require_once('../config/common.php');
-if (!isset($_SESSION['id_usuario'])) {
-  header('Location: sist_login.php');
-  exit();
+if (!eh_administrador()) {
+    header('Location: sist_login.php');
+    exit();
 }
 
 ?>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['id_usuario'])) {
     <!-- Box com os botões -->
     <div class="box">
       <?php
-      if (eh_adminstrador()): ?>
+      if (eh_administrador()): ?>
         <a href="adm_funcionarios.php" class="menu-button">
           <img src="../../SRC/image/icons/10-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
           <strong><span>FUNCIONÁRIOS</span></strong>

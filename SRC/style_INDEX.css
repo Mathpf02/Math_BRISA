@@ -1,12 +1,12 @@
 /* ========================= FONTES ========================= */
 @font-face {
   font-family: "montserrat-arabic semibold";
-  src: url("../SRC/fonts/Montserrat-Arabic-SemiBold.otf");
+  src: url("../fonts/Montserrat-Arabic-SemiBold.otf");
 }
 
 @font-face {
   font-family: "montserrat-arabic light";
-  src: url("../SRC/fonts/Montserrat-Arabic-Light300.otf");
+  src: url("../fonts/Montserrat-Arabic-Light300.otf");
 }
 
 /* ========================= BASE ========================= */

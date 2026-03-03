@@ -3,7 +3,7 @@
 require_once('../config/common.php');
 require_once('../config/config_alquimia.php');
 
-if (!eh_adminstrador()) {
+if (!eh_administrador()) {
     header('Location: sist_login.php');
     exit();
 }
@@ -56,7 +56,7 @@ if (isset($_GET['id'])) {
         <h3>SISTEMA DE GESTÃO DE ESTOQUE</h3>
     </div>
     <div class="container">
-        <form action="../config/config_cadastro.php" method="POST" class="form">
+        <form action="../config/config_cad-funcionario.php" method="POST" class="form">
             <input type="hidden" name="id_usuario" value="<?php echo $dados['id_usuario']; ?>">
             <input type="hidden" name="acao" value="<?php echo $edit_mode ? 'editar' : 'cadastrar'; ?>">
 
@@ -73,7 +73,7 @@ if (isset($_GET['id'])) {
             </select>
 
             <button type="submit"><strong><?php echo $edit_mode ? "SALVAR" : "CADASTRAR"; ?></strong></button>
-            <a href="adm_funcionarios.php">CANCELAR</a>
+            <a href="adm_funcionario.php">CANCELAR</a>
         </form>
     </div>
 

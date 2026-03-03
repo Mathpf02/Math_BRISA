@@ -1,7 +1,7 @@
 <?php
-// Verifica se o usuário logado é um ADMINISTRADOR e FUNCIONÁRIO
-session_start();
-if (!isset($_SESSION['id_usuarios']) || $_SESSION['funcao'] != 'admin' && $_SESSION['funcao'] != 'funci') {
+require_once('../config/common.php');
+
+if (!eh_administrador()) {
     header('Location: sist_login.php');
     exit();
 }
