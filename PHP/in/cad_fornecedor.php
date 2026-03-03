@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
     $edit_mode = true;
     $id = intval($_GET['id']);
 
-   $sql = "SELECT * FROM FORNECEDOR WHERE id_fornecedor = ?";
+    $sql = "SELECT * FROM FORNECEDOR WHERE id_fornecedor = ?";
     $stmt = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($stmt, "i", $id);
     mysqli_stmt_execute($stmt);
@@ -70,7 +70,7 @@ if (isset($_GET['id'])) {
             <input type="file" name="ft_perfil" placeholder="FOTO DE PERFIL" value="<?php echo htmlspecialchars($dados['ft_perfil']); ?>" required>
 
             <button type="submit"><strong><?php echo $edit_mode ? "SALVAR" : "CADASTRAR"; ?></strong></button>
-            <a href="adm_fornecedores.php">CANCELAR</a>
+            <a href="adm_fornecedor.php">CANCELAR</a>
         </form>
     </div>
 

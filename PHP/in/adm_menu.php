@@ -2,8 +2,8 @@
 // Verifica se o usuário logado é um FUNCIONÁRIO
 require_once('../config/common.php');
 if (!eh_administrador()) {
-    header('Location: sist_login.php');
-    exit();
+  header('Location: sist_login.php');
+  exit();
 }
 
 ?>
@@ -48,7 +48,7 @@ if (!eh_administrador()) {
     <div class="box">
       <?php
       if (eh_administrador()): ?>
-        <a href="adm_funcionarios.php" class="menu-button">
+        <a href="adm_funcionario.php" class="menu-button">
           <img src="../../SRC/image/icons/10-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
           <strong><span>FUNCIONÁRIOS</span></strong>
         </a>
@@ -56,14 +56,14 @@ if (!eh_administrador()) {
           <img src="../../SRC/image/icons/4-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
           <strong><span>FORNECEDOR</span></strong>
         </a>
-        <a href="adm_relatorios.php" class="menu-button">
+        <a href="relatorios.php" class="menu-button">
           <img src="../../SRC/image/icons/22-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
           <strong><span>RELATÓRIOS</span></strong>
         </a>
 
       <?php endif; ?>
 
-      <a href="ger_produtos.php" class="menu-button">
+      <a href="produtos.php" class="menu-button">
         <img src="../../SRC/image/icons/15-icon.png" alt="" class="menu-icon-img" aria-hidden="true">
         <strong><span>PRODUTOS</span></strong>
       </a>

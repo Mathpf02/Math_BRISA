@@ -37,15 +37,21 @@ unset($_SESSION['pesquisa']);
 
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <a class="nav-logo-link" href="https://unipampa.edu.br/portal/" target="_blank">
-            <img src="../../SRC/image/Logo_UNIPAMPA.png" class="nav-logo">
-        </a>
+    <!-- Navbar somente com as logos -->
+    <header class="header">
+        <div class="header-container">
+            <a href="../../index.html" class="logo-link">
+                <!-- A imagem esta com ENDEREÇO ERRADO - CSS precisa de alteração  -->
+                <img src="../SRC/image/Logo_ALQUIMIA.png" alt="Alquimia Taverna" class="logo-unipampa" />
+            </a>
 
-        <a class="nav-logo-link" href="../../index.html">
-            <img src="../../SRC/image/Logo_ALQUIMIA.png" class="nav-logo alquimia">
-        </a>
+            <nav class="nav-menu" aria-label="Navegação principal">
+
+                <a class="nav-btn" href="adm_menu.php">MENU</a>
+                <span class="nav-divider">|</span>
+                <a href="../config/verif_logout.php" class="nav-btn btn-entrar">SAIR</a>
+            </nav>
+        </div>
     </header>
 
     <!-- CONTEÚDO PRINCIPAL -->
@@ -61,7 +67,7 @@ unset($_SESSION['pesquisa']);
         <div class="box">
             <div class="pesquisa-cadastro">
 
-                <form action="../config/config_pesquisa.php" method="POST" class="form">
+                <form action="../config/config_pesq-funcionario.php" method="POST" class="form">
                     <input type="text" class="campo-pesquisa" placeholder="NOME | SOBRENOME | CPF | E-MAIL" name="pesquisa" id="pesquisa">
                     <input type="submit" value="PESQUISA" class="btn-adicionar">
                 </form>

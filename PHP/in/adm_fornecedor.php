@@ -53,7 +53,7 @@ unset($_SESSION['pesquisa_fornecedor']);
         <div class="table-container">
             <div class="pesquisa-cadastro">
 
-                <form action="../config/config_pesq_fornecedor.php" method="POST" class="form">
+                <form action="../config/config_pesq-fornecedor.php" method="POST" class="form">
                     <input type="text" class="campo-pesquisa" placeholder="NOME | SOBRENOME | CPF/CNPJ | E-MAIL" name="pesquisa" id="pesquisa">
                     <input type="submit" value="PESQUISA" class="btn-adicionar">
                 </form>
